@@ -1,0 +1,369 @@
+{
+   "LOAD": {
+      "prefix": "LOAD",
+      "body": "LOAD \"${1:filename}\"",
+      "description":"Loads data from the file system."
+   },
+   "FLATTEN": {
+      "prefix": "FLATTEN",
+      "body": "FLATTEN(${1:alias})",
+      "description":"Flatten un-nests tuples as well as bags."
+   },
+   "FILTER": {
+      "prefix": "FILTER",
+      "body": "FILTER ${1:alias} BY ${2:expression};",
+      "description":"Selects tuples from a relation based on some condition."
+   },
+   "CROSS": {
+      "prefix": "CROSS",
+      "body": "CROSS ${1:alias1}, ${2:alias2};",
+      "description":"Computes the cross product of two or more relations."
+   },
+   "DISTINCT": {
+      "prefix": "DISTINCT",
+      "body": "DISTINCT ${1:alias};",
+      "description":"Removes duplicate tuples in a relation."
+   },
+   "GROUP_BY": {
+      "prefix": "GROUPBY",
+      "body": "GROUP ${1:alias} BY ${1:expression};",
+      "description":"Groups the data in one or multiple relations. GROUP is the same as COGROUP. For readability, programmers usually use GROUP when only one relation is involved and COGROUP with multiple relations are involved."
+   },
+   "GROUP_ALL": {
+      "prefix": "GROUPALL",
+      "body": "GROUP ${1:alias} ALL;",
+      "description":"Groups the data in one or multiple relations. GROUP is the same as COGROUP. For readability, programmers usually use GROUP when only one relation is involved and COGROUP with multiple relations are involved."
+   },
+   "JOIN_INNER": {
+      "prefix": "JOIN_INNER",
+      "body": "JOIN ${1:alias1} BY ${2:column1}, ${3:alias2} BY ${4:column2};",
+      "description":"Performs inner, equijoin of two or more relations based on common field values."
+   },
+   "JOIN_RIGHT_OUTER": {
+      "prefix": "JOIN_RIGHT_OUTER",
+      "body": "JOIN ${1:left-alias} BY ${2:left-alias-column} RIGHT OUTER, ${3:right-alias} BY ${4:right-alias-column};",
+      "description":"Performs an right outer join of two or more relations based on common field values."
+   },
+   "JOIN_LEFT_OUTER": {
+      "prefix": "JOIN_LEFT_OUTER",
+      "body": "JOIN ${1:left-alias} BY ${2:left-alias-column} LEFT OUTER, ${3:right-alias} BY ${4:right-alias-column};",
+      "description":"Performs an left outer join of two or more relations based on common field values."
+   },
+   "JOIN_FULL_OUTER": {
+      "prefix": "JOIN_FULL_OUTER",
+      "body": "JOIN ${1:left-alias} BY ${2:left-alias-column} FULL OUTER, ${3:right-alias} BY ${4:right-alias-column};",
+      "description":"Performs an full outer join of two or more relations based on common field values."
+   },
+   "LIMIT": {
+      "prefix": "LIMIT",
+      "body": "LIMIT ${1:alias} ${2:n};",
+      "description":"Limits the number of output tuples."
+   },
+   "ORDER_ASC": {
+      "prefix": "ORDER_ASC",
+      "body": "ORDER ${1:alias} BY ${2:column} ASC;",
+      "description":"Sorts a relation ascendingly based on one or more fields."
+   },
+   "ORDER_DESC": {
+      "prefix": "ORDER_DESC",
+      "body": "ORDER ${1:alias} BY ${2:column} DESC;",
+      "description":"Sorts a relation descendingly based on one or more fields."
+   },
+   "ORDER_ALL_ASC": {
+      "prefix": "ORDER_ALL_ASC",
+      "body": "ORDER ${1:alias} BY * ASC;",
+      "description":"Sorts by all columns ascendingly."
+   },
+   "ORDER_ALL_DESC": {
+      "prefix": "ORDER_ALL_DESC",
+      "body": "ORDER ${1:alias} BY * DESC;",
+      "description":"Sorts by all columns descendingly."
+   },
+   "RANK": {
+      "prefix": "RANK",
+      "body": "RANK ${1:alias};",
+      "description":"Returns each tuple with the rank within a relation."
+   },
+   "SAMPLE": {
+      "prefix": "SAMPLE",
+      "body": "SAMPLE ${1:alias} ${2:size};",
+      "description":"Selects a random sample of data based on the specified sample size."
+   },
+   "SPLIT": {
+      "prefix": "SPLIT",
+      "body": "SPLIT ${1:alias} INTO ${2:alias1} IF ${3:condition1}, ${4:alias2} IF ${5:condition2};",
+      "description":"Partitions a relation into two or more relations."
+   },
+   "STORE": {
+      "prefix": "STORE",
+      "body": "STORE ${1:alias} INTO '${2:directory}' USING ${3:function};",
+      "description":"Stores or saves results to the file system."
+   },
+   "STREAM": {
+      "prefix": "STREAM",
+      "body": "STREAM ${1:alias} THROUGH '${2:command}';",
+      "description":"Sends data to an external script or program."
+   },
+   "UNION": {
+      "prefix": "UNION",
+      "body": "UNION ${1:alias1}, ${1:alias2};",
+      "description":"Computes the union of two or more relations."
+   },
+   "ABS": {
+      "prefix": "ABS",
+      "body": "ABS(${1:expr})",
+      "description":"Returns the absolute given value."
+   },
+   "ACOS": {
+      "prefix": "ACOS",
+      "body": "ACOS(${1:expr})",
+      "description":"Returns the arc cosine of the given value."
+   },
+   "ASIN": {
+      "prefix": "ASIN",
+      "body": "ASIN(${1:expr})",
+      "description":"Returns the arc sine of the given value."
+   },
+   "ATAN": {
+      "prefix": "ATAN",
+      "body": "ATAN(${1:expr})",
+      "description":"Returns the arc tangent of the given value."
+   },
+   "CBRT": {
+      "prefix": "CBRT",
+      "body": "CBRT(${1:expr})",
+      "description":"Returns the cube root of the given value."
+   },
+   "CEIL": {
+      "prefix": "CEIL",
+      "body": "CEIL(${1:expr})",
+      "description":"Returns the next highest double value that is a mathematical integer."
+   },
+   "COS": {
+      "prefix": "COS",
+      "body": "COS(${1:expr})",
+      "description":"Returns the cosine of the value."
+   },
+   "COSH": {
+      "prefix": "COSH",
+      "body": "COSH(${1:expr})",
+      "description":"Returns the hyperbolic cosine of the given value."
+   },
+   "EXP": {
+      "prefix": "EXP",
+      "body": "EXP(${1:expr})",
+      "description":"Returns the Euler's number (e) raised to the power of the given value."
+   },
+   "FLOOR": {
+      "prefix": "FLOOR",
+      "body": "FLOOR(${1:expr})",
+      "description":"Returns the next lowest double value that is a mathematical integer."
+   },
+   "LOG": {
+      "prefix": "LOG",
+      "body": "LOG(${1:expr})",
+      "description":"Returns the natural logarithm of the given value."
+   },
+   "LOG10": {
+      "prefix": "LOG10",
+      "body": "LOG10(${1:expr})",
+      "description":"Returns the logarithm base 10 of the given value."
+   },
+   "ROUND": {
+      "prefix": "ROUND",
+      "body": "ROUND(${1:expr})",
+      "description":"Returns the long nearst to the given value."
+   },
+   "SIN": {
+      "prefix": "SIN",
+      "body": "SIN(${1:expr})",
+      "description":"Returns the sine of the given value."
+   },
+   "SINH": {
+      "prefix": "SINH",
+      "body": "SINH(${1:expr})",
+      "description":"Returns the hyperbolic sine of the given value."
+   },
+   "SQRT": {
+      "prefix": "SQRT",
+      "body": "SQRT(${1:expr})",
+      "description":"Returns the square root of the given value."
+   },
+   "TAN": {
+      "prefix": "TAN",
+      "body": "TAN(${1:expr})",
+      "description":"Returns the tangent of the given value."
+   },
+   "TANH": {
+      "prefix": "TANH",
+      "body": "TANH(${1:expr})",
+      "description":"Returns the hyperbolic tangent of the given value."
+   },
+   "AVG": {
+      "prefix": "AVG",
+      "body": "AVG(${1:expr})",
+      "description":"Returns the average of the all values in the given input. Null values are ignored."
+   },
+
+   "COUNT_STAR": {
+      "prefix": "COUNT_STAR",
+      "body": "COUNT_STAR(${1:expr})",
+      "description":"Returns the number of all records in the given input. Including null values."
+   },
+   "MAX": {
+      "prefix": "MAX",
+      "body": "MAX(${1:expr})",
+      "description":"Returns the maximum value in the given input. Null values are ignored."
+   },
+   "MIN": {
+      "prefix": "MIN",
+      "body": "MIN(${1:expr})",
+      "description":"Returns the minimum value in the given input. Null values are ignored."
+   },
+   "SUM": {
+      "prefix": "SUM",
+      "body": "SUM(${1:expr})",
+      "description":"Returns the sum of all values in the given input. Null values are ignored."
+   },
+
+   "CONCAT": {
+      "prefix": "SUM",
+      "body": "SUM(${1:value1}, ${1:value2})",
+      "description":"Concatenation of value1 and value2."
+   },
+   "INDEXOF": {
+      "prefix": "INDEXOF",
+      "body": "INDEXOF(${1:source}, '${1:search}')",
+      "description":"Returns the index of the first instance of the search; -1 if search is not in the source."
+   },
+   "LAST_INDEX_OF": {
+      "prefix": "LAST_INDEX_OF",
+      "body": "LAST_INDEX_OF(${1:source}, '${1:search}')",
+      "description":"Returns the index of the last instance of the search; -1 if search is not in the source."
+   },
+   "LCFIRST": {
+      "prefix": "LCFIRST",
+      "body": "LCFIRST(${1:input})",
+      "description":"Returns the given input but with the first character converted to lowercase."
+   },
+   "LOWER": {
+      "prefix": "LOWER",
+      "body": "LOWER(${1:input})",
+      "description":"Returns the given input with all characters converted to lowercase."
+   },
+   "REGEX_EXTRACT": {
+      "prefix": "REGEX_EXTRACT",
+      "body": "REGEX_EXTRACT(${1:input}, '${2:regex}')",
+      "description":"Returns the nth subset of the source matching the given regex. Null if there are no matches."
+   },
+   "REGEX_EXTRACT_ALL": {
+      "prefix": "REGEX_EXTRACT_ALL",
+      "body": "REGEX_EXTRACT_ALL(${1:input}, '${2:regex}', ${3:nth})",
+      "description":"Returns a tuple containing all subsets of the source matching the given regex. Null if there are no matches."
+   },
+   "REPLACE": {
+      "prefix": "REPLACE",
+      "body": "REPLACE(${1:source}, '${2:toReplace}', '${3:newValue}')",
+      "description":"Returns the source string with all instances of toReplace changed to newValue."
+   },
+   "SIZE": {
+      "prefix": "SIZE",
+      "body": "SIZE(${1:input})",
+      "description":"Generates the size of the argument passed to it. For bytearrays this means the number of bytes. For charrays the number of characters. For bags the number of tuples, for tuples the number of fields, and for maps the number of keyvalue pairs. For all other types the value of 1 is always returned."
+   },
+   "STRSPLIT": {
+      "prefix": "STRSPLIT",
+      "body": "STRSPLIT(${1:source})",
+      "description":"Returns a tuple with one field per section of the source. This UDF splits using whitespace."
+   },
+   "STRSPLIT_REGEX": {
+      "prefix": "STRSPLIT",
+      "body": "STRSPLIT(${1:source}, '${2:regex}')",
+      "description":"Returns a tuple with one field per section of the source."
+   },
+   "STRSPLIT_REGEX_MAX": {
+      "prefix": "STRSPLIT",
+      "body": "SUBSTRING(${1:source}, '${2:regex}', ${3:maxSplits})",
+      "description":"Returns a tuple with one field per section of the source. If there are more than maxSplits sections  only the first maxSplits sections will be returned."
+   },
+   "SUBSTRING": {
+      "prefix": "SUBSTRING",
+      "body": "STRSPLIT(${1:source}, ${2:start}, ${3:end})",
+      "description":"Returns the substring. It will throw and error if any input value has length shorter than start."
+   },
+   "TOKENIZE": {
+      "prefix": "TOKENIZE",
+      "body": "TOKENIZE(${1:input})",
+      "description":"Splits the input on whitespace, with each resulting value being placed in its own tuple and all tuples placed in a bag."
+   },
+   "TRIM": {
+      "prefix": "TRIM",
+      "body": "TRIM(${1:input})",
+      "description":"Returns the input value with all leading and trailing whitespaces removed."
+   },
+   "UCFIRST": {
+      "prefix": "UCFIRST",
+      "body": "UCFIRST(${1:input})",
+      "description":"Returns the input value with the first character in uppercase."
+   },
+   "UPPER": {
+      "prefix": "UPPER",
+      "body": "UPPER(${1:input})",
+      "description":"Returns the input value with all characters in uppercase."
+   },
+   "COR": {
+      "prefix": "COR",
+      "body": "COR(${1:bag1}, ${2:bag2})",
+      "description":"Computes the correlation between sets of data. The returned value will be a bag which will contain a tuple for each combination of input schema and inside tuple we will have two schema name and correlation between those two schemas."
+   },
+   "COV": {
+      "prefix": "COV",
+      "body": "COV(${1:bag1}, ${2:bag2})",
+      "description":"Computes the covariance between sets of data. The returned value will be a bag which will contain a tuple for each combination of input schema and inside tuple we will have two schema name and covariance between those two schemas."
+   },
+   "DIFF": {
+      "prefix": "DIFF",
+      "body": "DIFF(${1:bag1}, ${2:bag2})",
+      "description":"DIFF takes two bags as arguments and compares them. Any tuples that are in one bag but not the other are returned. If the fields are not bags then they will be returned if they do not match, or an empty bag will be returned if the two records match."
+   },
+   "TOBAG": {
+      "prefix": "TOBAG",
+      "body": "TOBAG(${1:expr})",
+      "description":"Converts one or more expressions to type bag."
+   },
+   "TOMAP": {
+      "prefix": "TOMAP",
+      "body": "TOMAP(${1:key-expr}, ${2:value-expr})",
+      "description":"Converts key/value expression pairs into a map."
+   },
+   "TOTUPLE": {
+      "prefix": "TOTUPLE",
+      "body": "TOTUPLE(${1:expr})",
+      "description":"Converts one or more expressions to type tuple."
+   },
+   "TOP": {
+      "prefix": "TOP",
+      "body": "TOP(${1:n}, ${2:field}, ${3:source})",
+      "description":"Returns the top-n tuples from the given source bag of tuples."
+   },
+   "COUNT": {
+      "prefix": "COUNT",
+      "body": "COUNT(${1:expr})",
+      "description":"Computes the number of elements in a bag."
+   },
+   "IsEmpty": {
+      "prefix": "IsEmpty",
+      "body": "IsEmpty(${1:expr})",
+      "description":"Checks if a bag or map is empty."
+   },
+   "RANDOM": {
+      "prefix": "RANDOM",
+      "body": "RANDOM(${1:expr})",
+      "description":"Returns a pseudo random number."
+   },
+   "MATCHES": {
+      "prefix": "matches",
+      "body": "matches '${1:pattern}'",
+      "description":"Expression matches with the given pattern."
+   }
+}
