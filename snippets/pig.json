@@ -1,8 +1,8 @@
 {
    "LOAD": {
       "prefix": "LOAD",
-      "body": "LOAD \"${1:filename}\"",
-      "description":"Loads data from the file system."
+      "body": "LOAD '${1:input}' USING ${2:function}",
+      "description":"Loads data from the given input using the given function."
    },
    "FLATTEN": {
       "prefix": "FLATTEN",
@@ -25,32 +25,32 @@
       "description":"Removes duplicate tuples in a relation."
    },
    "GROUP_BY": {
-      "prefix": "GROUPBY",
+      "prefix": "GROUP BY",
       "body": "GROUP ${1:alias} BY ${1:expression};",
       "description":"Groups the data in one or multiple relations. GROUP is the same as COGROUP. For readability, programmers usually use GROUP when only one relation is involved and COGROUP with multiple relations are involved."
    },
    "GROUP_ALL": {
-      "prefix": "GROUPALL",
+      "prefix": "GROUP ALL",
       "body": "GROUP ${1:alias} ALL;",
       "description":"Groups the data in one or multiple relations. GROUP is the same as COGROUP. For readability, programmers usually use GROUP when only one relation is involved and COGROUP with multiple relations are involved."
    },
    "JOIN_INNER": {
-      "prefix": "JOIN_INNER",
+      "prefix": "JOIN INNER",
       "body": "JOIN ${1:alias1} BY ${2:column1}, ${3:alias2} BY ${4:column2};",
       "description":"Performs inner, equijoin of two or more relations based on common field values."
    },
    "JOIN_RIGHT_OUTER": {
-      "prefix": "JOIN_RIGHT_OUTER",
+      "prefix": "JOIN RIGHT OUTER",
       "body": "JOIN ${1:left-alias} BY ${2:left-alias-column} RIGHT OUTER, ${3:right-alias} BY ${4:right-alias-column};",
       "description":"Performs an right outer join of two or more relations based on common field values."
    },
    "JOIN_LEFT_OUTER": {
-      "prefix": "JOIN_LEFT_OUTER",
+      "prefix": "JOIN LEFT OUTER",
       "body": "JOIN ${1:left-alias} BY ${2:left-alias-column} LEFT OUTER, ${3:right-alias} BY ${4:right-alias-column};",
       "description":"Performs an left outer join of two or more relations based on common field values."
    },
    "JOIN_FULL_OUTER": {
-      "prefix": "JOIN_FULL_OUTER",
+      "prefix": "JOIN FULL OUTER",
       "body": "JOIN ${1:left-alias} BY ${2:left-alias-column} FULL OUTER, ${3:right-alias} BY ${4:right-alias-column};",
       "description":"Performs an full outer join of two or more relations based on common field values."
    },
@@ -60,22 +60,22 @@
       "description":"Limits the number of output tuples."
    },
    "ORDER_ASC": {
-      "prefix": "ORDER_ASC",
+      "prefix": "ORDER ASC",
       "body": "ORDER ${1:alias} BY ${2:column} ASC;",
       "description":"Sorts a relation ascendingly based on one or more fields."
    },
    "ORDER_DESC": {
-      "prefix": "ORDER_DESC",
+      "prefix": "ORDER DESC",
       "body": "ORDER ${1:alias} BY ${2:column} DESC;",
       "description":"Sorts a relation descendingly based on one or more fields."
    },
    "ORDER_ALL_ASC": {
-      "prefix": "ORDER_ALL_ASC",
+      "prefix": "ORDER ALL ASC",
       "body": "ORDER ${1:alias} BY * ASC;",
       "description":"Sorts by all columns ascendingly."
    },
    "ORDER_ALL_DESC": {
-      "prefix": "ORDER_ALL_DESC",
+      "prefix": "ORDER ALL DESC",
       "body": "ORDER ${1:alias} BY * DESC;",
       "description":"Sorts by all columns descendingly."
    },
