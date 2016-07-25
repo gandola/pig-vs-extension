@@ -225,11 +225,20 @@
       "body": "SUM(${1:expr})",
       "description":"Returns the sum of all values in the given input. Null values are ignored."
    },
-
    "CONCAT": {
       "prefix": "SUM",
       "body": "SUM(${1:value1}, ${1:value2})",
       "description":"Concatenation of value1 and value2."
+   },
+   "ENDSWITH": {
+      "prefix": "ENDSWITH",
+      "body": "ENDSWITH ${1:input}, '${2:search}'}'",
+      "description":"Tests inputs to determine if the first argument ends with the search string."
+   },
+   "EqualsIgnoreCase": {
+      "prefix": "EqualsIgnoreCase",
+      "body": "EqualsIgnoreCase ${1:str1}, ${2:str2}}'",
+      "description":"Compares two Strings ignoring case."
    },
    "INDEXOF": {
       "prefix": "INDEXOF",
@@ -266,10 +275,25 @@
       "body": "REPLACE(${1:source}, '${2:toReplace}', '${3:newValue}')",
       "description":"Returns the source string with all instances of toReplace changed to newValue."
    },
+   "LTRIM": {
+      "prefix": "LTRIM",
+      "body": "LTRIM(${1:input})",
+      "description":"Returns a copy of a string with only leading white space removed."
+   },
+   "RTRIM": {
+      "prefix": "RTRIM",
+      "body": "RTRIM(${1:input})",
+      "description":"Returns a copy of a string with only trailing white space removed."
+   },
    "SIZE": {
       "prefix": "SIZE",
       "body": "SIZE(${1:input})",
       "description":"Generates the size of the argument passed to it. For bytearrays this means the number of bytes. For charrays the number of characters. For bags the number of tuples, for tuples the number of fields, and for maps the number of keyvalue pairs. For all other types the value of 1 is always returned."
+   },
+   "SPRINTF": {
+      "prefix": "SPRINTF",
+      "body": "SPRINTF('${1:format}', ${2:arg1}, ${3:arg2})",
+      "description":"Formats a set of values according to a printf-style template, using the native Java Formatter library."
    },
    "STRSPLIT": {
       "prefix": "STRSPLIT",
@@ -280,6 +304,11 @@
       "prefix": "STRSPLIT",
       "body": "STRSPLIT(${1:source}, '${2:regex}')",
       "description":"Returns a tuple with one field per section of the source."
+   },
+   "STRSPLITTOBAG": {
+      "prefix": "STRSPLITTOBAG",
+      "body": "STRSPLITTOBAG(${1:source}, '${2:regex}', ${3:limit})",
+      "description":"Splits a string around matches of a given regular expression and returns a databag."
    },
    "STRSPLIT_REGEX_MAX": {
       "prefix": "STRSPLIT",
@@ -365,5 +394,200 @@
       "prefix": "matches",
       "body": "matches '${1:pattern}'",
       "description":"Expression matches with the given pattern."
+   },
+   "PluckTuple": {
+      "prefix": "PluckTuple",
+      "body": "DEFINE ${1:pluckName} PluckTuple (${1:expr1})",
+      "description":"Allows the user to specify a string prefix, and then filter for the columns in a relation that begin with that prefix or match that regex pattern. Optionally, include flag 'false' to filter for columns that do not match that prefix or match that regex pattern."
+   },
+   "BloomBuild": {
+      "prefix": "BloomBuild", 
+      "body": "DEFINE {1:bloomName} BuildBloom('${2:hashType}', '${3:mode}', '${4:vectorSize}', '${5:nbHash}');",
+      "description":"Bloom filters are a common way to select a limited set of records before moving data for a join or other heavy weight operation."
+   },
+   "Bloom": {
+      "prefix": "Bloom", 
+      "body": "DEFINE {1:bloomName} Bloom('${2:filename}');",
+      "description":"Bloom filters are a common way to select a limited set of records before moving data for a join or other heavy weight operation."
+   },
+   "BagToString": {
+      "prefix": "BagToString", 
+      "body": "BagToString(${1:bag}, '${2:delimiter}')",
+      "description":"Concatenate the elements of a Bag into a chararray string, placing an optional delimiter between each value."
+   },
+   "AddDuration": {
+      "prefix": "AddDuration", 
+      "body": "AddDuration(${1:datetime}, ${2:duration})",
+      "description":"Returns the result of a DateTime object plus the given Duration object."
+   },
+   "CurrentTime": {
+      "prefix": "CurrentTime", 
+      "body": "CurrentTime()",
+      "description":"Returns the DateTime object of the current time with millisecond accuracy."
+   },
+   "DaysBetween": {
+      "prefix": "DaysBetween", 
+      "body": "DaysBetween(${1:datetime1}, ${2:duration2})",
+      "description":"Returns the number of days between two DateTime objects."
+   },
+   "GetDay": {
+      "prefix": "GetDay", 
+      "body": "GetDay(${1:datetime})",
+      "description":"Returns the day of a month from a DateTime object."
+   },
+   "GetHour": {
+      "prefix": "GetHour", 
+      "body": "GetHour(${1:datetime})",
+      "description":"Returns the hour of a day from a DateTime object."
+   },
+   "GetMilliSecond": {
+      "prefix": "GetMilliSecond", 
+      "body": "GetMilliSecond(${1:datetime})",
+      "description":"Returns the millisecond of a second from a DateTime object."
+   },
+   "GetMinute": {
+      "prefix": "GetMinute", 
+      "body": "GetMinute(${1:datetime})",
+      "description":"Returns the minute of a hour from a DateTime object."
+   },
+   "GetMonth": {
+      "prefix": "GetMonth", 
+      "body": "GetMonth(${1:datetime})",
+      "description":"Returns the month of a year from a DateTime object."
+   },
+   "GetSecond": {
+      "prefix": "GetSecond", 
+      "body": "GetSecond(${1:datetime})",
+      "description":"Returns the second of a minute from a DateTime object."
+   },
+   "GetWeek": {
+      "prefix": "GetWeek", 
+      "body": "GetWeek(${1:datetime})",
+      "description":"Returns the week of a week year from a DateTime object."
+   },
+   "GetWeekYear": {
+      "prefix": "GetWeekYear", 
+      "body": "GetWeekYear(${1:datetime})",
+      "description":"Returns the week year from a DateTime object."
+   },
+   "GetYear": {
+      "prefix": "GetYear", 
+      "body": "GetYear(${1:datetime})",
+      "description":"Returns the year from a DateTime object."
+   },
+   "HoursBetween": {
+      "prefix": "HoursBetween", 
+      "body": "HoursBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of hours between two DateTime objects."
+   },
+   "MilliSecondsBetween": {
+      "prefix": "MilliSecondsBetween", 
+      "body": "MilliSecondsBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of milliseconds between two DateTime objects."
+   },
+   "MinutesBetween": {
+      "prefix": "MinutesBetween", 
+      "body": "MinutesBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of minutes between two DateTime objects."
+   },
+   "MonthsBetween": {
+      "prefix": "MonthsBetween", 
+      "body": "MonthsBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of months between two DateTime objects."
+   },
+   "SecondsBetween": {
+      "prefix": "SecondsBetween", 
+      "body": "SecondsBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of seconds between two DateTime objects."
+   },
+   "SubtractDuration": {
+      "prefix": "SubtractDuration", 
+      "body": "SubtractDuration(${1:datetime}, ${2:duration})",
+      "description":"Returns the result of a DateTime object minus the given Duration object."
+   },
+   "ToDate": {
+      "prefix": "ToDate", 
+      "body": "ToDate(${1:millis_or_string})",
+      "description":"Returns a DateTime object according to parameters."
+   },
+   "ToDate_With_Format": {
+      "prefix": "ToDate with Format", 
+      "body": "ToDate(${1:string}, '${2:format}')",
+      "description":"Returns a DateTime object according to parameters using format."
+   },
+   "ToDate_With_Timezone": {
+      "prefix": "ToDate with Timezone", 
+      "body": "ToDate(${1:string}, '${2:format}', '${3:timezone}')",
+      "description":"Returns a DateTime object according to parameters using format and timezone."
+   },
+   "ToMilliSeconds": {
+      "prefix": "ToMilliSeconds", 
+      "body": "ToMilliSeconds(${1:datetime})",
+      "description":"Returns the number of milliseconds elapsed since January 1, 1970, 00:00:00.000 GMT for a DateTime object."
+   },
+   "ToString": {
+      "prefix": "ToString", 
+      "body": "ToString(${1:datetime}')",
+      "description":"ToString converts the DateTime object to the ISO or the customized string."
+   },
+   "ToString_With_Format": {
+      "prefix": "ToString with Format", 
+      "body": "ToString(${1:datetime}, '${2:format}')",
+      "description":"ToString converts the DateTime object to string using the given format."
+   },
+   "ToUnixTime": {
+      "prefix": "ToUnixTime", 
+      "body": "ToUnixTime(${1:datetime})",
+      "description":"Returns the Unix Time as long for a DateTime object. UnixTime is the number of seconds elapsed since January 1, 1970, 00:00:00.000 GMT."
+   },
+   "WeeksBetween": {
+      "prefix": "WeeksBetween", 
+      "body": "WeeksBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of weeks between two DateTime objects."
+   },
+   "YearsBetween": {
+      "prefix": "YearsBetween", 
+      "body": "YearsBetween(${1:datetime1}, ${2:datetime2})",
+      "description":"Returns the number of years between two DateTime objects."
+   },
+   "LOAD_BinStorage": {
+      "prefix": "LOAD USING BinStorage", 
+      "body": "LOAD '${1:location}' USING BinStorage();",
+      "description":"Loads data in machine-readable format."
+   },
+   "STORE_BinStorage": {
+      "prefix": "STORE USING BinStorage", 
+      "body": "STORE ${1:alias} INTO '${2:location}' USING BinStorage();",
+      "description":"Stores data in machine-readable format."
+   },
+   "LOAD_JsonStorage": {
+      "prefix": "LOAD USING JsonLoader", 
+      "body": "LOAD '${1:location}' USING JsonLoader();",
+      "description":"Loads JSON data."
+   },
+   "STORE_JsonStorage": {
+      "prefix": "STORE USING JsonStorage", 
+      "body": "STORE ${1:alias} INTO '${2:location}' USING JsonStorage();",
+      "description":"Stores data in JSON."
+   },
+   "STORE_PigDump": {
+      "prefix": "STORE USING PigDump", 
+      "body": "STORE ${1:alias} INTO '${2:location}' USING PigDump();",
+      "description":"Stores data in UTF-8 format."
+   },
+   "LOAD_PigStorage": {
+      "prefix": "LOAD USING PigStorage", 
+      "body": "LOAD '${2:location}' USING PigStorage();",
+      "description":"Loads data as structured text files."
+   },
+   "STORE_PigStorage": {
+      "prefix": "STORE USING PigStorage", 
+      "body": "STORE ${1:alias} INTO '${2:location}' USING PigStorage();",
+      "description":"Stores data as structured text files."
+   },
+   "LOAD_TextLoader": {
+      "prefix": "LOAD USING TextLoader", 
+      "body": "LOAD '${2:location}' USING TextLoader();",
+      "description":"Loads unstructured data in UTF-8 format."
    }
 }
