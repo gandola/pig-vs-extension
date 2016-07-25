@@ -10,3 +10,7 @@ Simple extension to bring syntax highlighting and some snippets for Pig Latin.
 ## Inspired by the work of:
 
 - https://github.com/Tibo-R/language-pig (atom package)
+
+## References
+
+- http://pig.apache.org/
