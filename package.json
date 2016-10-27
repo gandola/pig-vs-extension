@@ -1,49 +1,54 @@
 {
-    "name": "pig",
-    "displayName": "pig-vs-extension",
-    "description": "Pig Latin Extension",
-    "version": "1.1.0",
-    "publisher": "Gandola",
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "icon": "images/pig.gif",
-    "private": false,
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/gandola/pig-vs-extension.git"
-    },
-    "categories": [
-        "Languages",
-        "Snippets"
-    ],
-    "contributes": {
-        "languages": [
-            {
-                "id": "pig",
-                "aliases": [
-                    "pig",
-                    "pig"
-                ],
-                "extensions": [
-                    ".pig",
-                    ".q"
-                ],
-                "configuration": "./pig.configuration.json"
-            }
-        ],
-        "snippets": [
-            {
-                "language": "pig",
-                "path": "./snippets/pig.json"
-            }
-        ],
-        "grammars": [
-            {
-                "language": "pig",
-                "scopeName": "source.pig",
-                "path": "./syntaxes/pig.tmLanguage"
-            }
-        ]
-    }
+   "name": "pig",
+   "displayName": "pig-vs-extension",
+   "description": "Pig Latin Extension",
+   "version": "2.0.0",
+   "publisher": "Gandola",
+   "engines": {
+      "vscode": "^1.0.0"
+   },
+   "icon": "images/pig.gif",
+   "private": false,
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/gandola/pig-vs-extension.git"
+   },
+   "categories": [
+      "Languages",
+      "Snippets"
+   ],
+   "keywords": [
+      "Pig",
+      "Apache",
+      "Hadoop"
+   ],
+   "contributes": {
+      "languages": [
+         {
+            "id": "pig",
+            "aliases": [
+               "pig",
+               "pig"
+            ],
+            "extensions": [
+               ".pig",
+               ".q"
+            ],
+            "configuration": "./pig.configuration.json"
+         }
+      ],
+      "snippets": [
+         {
+            "language": "pig",
+            "path": "./snippets/pig.json"
+         }
+      ],
+      "grammars": [
+         {
+            "language": "pig",
+            "scopeName": "source.pig",
+            "path": "./syntaxes/Pig.tmLanguage.json"
+         }
+      ]
+   }
 }
