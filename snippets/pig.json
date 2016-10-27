@@ -1,4 +1,24 @@
 {
+   "REGISTER": {
+      "prefix": "REGISTER",
+      "body": "REGISTER ${1:alias};",
+      "description": "Registers a JAR file so that the UDFs in the file can be used."
+   },
+   "DEFINE": {
+      "prefix": "DEFINE",
+      "body": "DEFINE ${1:alias} ${2:expression};",
+      "description": "Assigns an alias to a UDF function or a streaming command."
+   },
+   "FOREACH": {
+      "prefix": "FOREACH",
+      "body": "FOREACH '${1:alias}' GENERATE '${2:expression}';",
+      "description": "Generates data transformations based on columns of data."
+   },
+   "FOREACH_NESTED": {
+      "prefix": "FOREACH_NESTED",
+      "body": "FOREACH '${1:alias}' { GENERATE '${2:expression}'; }",
+      "description": "Generates data transformations based on columns of data."
+   },
    "LOAD": {
       "prefix": "LOAD",
       "body": "LOAD '${1:input}' USING ${2:function}",
