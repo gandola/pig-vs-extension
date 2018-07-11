@@ -336,7 +336,7 @@
    },
    "SUBSTRING": {
       "prefix": "SUBSTRING",
-      "body": "STRSPLIT(${1:source}, ${2:start}, ${3:end})",
+      "body": "SUBSTRING(${1:source}, ${2:start}, ${3:end})",
       "description": "Returns the substring. It will throw and error if any input value has length shorter than start."
    },
    "TOKENIZE": {
