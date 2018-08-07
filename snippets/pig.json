@@ -329,8 +329,8 @@
       "body": "STRSPLITTOBAG(${1:source}, '${2:regex}', ${3:limit})",
       "description": "Splits a string around matches of a given regular expression and returns a databag."
    },
-   "STRSPLIT_REGEX_MAX": {
-      "prefix": "STRSPLIT",
+   "SUBSTRING_REGEX_MAX": {
+      "prefix": "SUBSTRING",
       "body": "SUBSTRING(${1:source}, '${2:regex}', ${3:maxSplits})",
       "description": "Returns a tuple with one field per section of the source. If there are more than maxSplits sections  only the first maxSplits sections will be returned."
    },
